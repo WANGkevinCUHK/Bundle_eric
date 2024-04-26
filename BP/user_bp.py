@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
 user_bp = Blueprint("user_bp", __name__, url_prefix="/")
 print(__name__)
-from user_form import RegistrationForm
+from forms import RegistrationForm
 
 # from flask import render_template, redirect, url_for, flash
 # from bp import bp
@@ -21,6 +21,13 @@ def register():
     else:
         form = RegistrationForm(request.form)
         if form.validate():
+            email = form.email.data
+            username = form.username.data
+            password = form.password.data
+            user = UserModel(email=email, username=username, password=generate_password_hash(password))
+            db.session.add(user)
+            db.session.commit()
+            return redirect(url_for("auth.login"))
             return "success"
         else:
             print(form.errors)

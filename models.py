@@ -24,10 +24,10 @@ class User(db.Model):
     activity = db.relationship("Event", backref="participants")
 
 
-# class Friendship(db.Model):
-#     __tablename__ = "friendship"
-#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-#     username = db.Column(db.String(100), nullable=False)
-#     password = db.Column(db.String(100), nullable=False)
-#     email = db.Column(db.String(100), unique=True, nullable=False)
-#     created_time = db.Column(db.DateTime, default=datetime.now)
+class Friendship(db.Model):
+    __tablename__ = "friendship"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    dst =  db.Column(db.Integer, nullable=False)
+    created_time = db.Column(db.DateTime, default=datetime.now)
+    src_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    src = db.relationship("User", backref="friendlist")

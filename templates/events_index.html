@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Login or Register</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p>Please choose an option below:</p>
+        <a href="{{ url_for('event_bp.list_events') }}" class="btn btn-primary">event list</a>
+        <a href="{{ url_for('event_bp.create') }}" class="btn btn-primary">create_events</a>
+        <a href="{{ url_for('user_bp.info') }}" class="btn btn-primary">my info</a>
+        <a href="{{ url_for('friend_bp.list_friends') }}" class="btn btn-primary">friend list</a>
+        <a href="{{ url_for('friend_bp.add_friends') }}" class="btn btn-primary">add friend</a>
+    </div>
+<a href="{{ url_for('user_bp.logout') }}" class="btn btn-primary">logout</a>
+</body>
+</html>

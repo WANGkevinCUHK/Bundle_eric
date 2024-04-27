@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <form method="POST" action="#">
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block"> add </button>
+</form>
+<a href="{{ url_for('user_bp.index') }}" class="btn btn-primary">index</a>
+</body>
+</html>

@@ -1,0 +1,5 @@
+flask~=3.0.3
+wtforms~=2.3.3
+alembic~=1.13.1
+sqlalchemy~=2.0.29
+#you may need to increase your watchdog and other python verison if needed, which is determined by your environment

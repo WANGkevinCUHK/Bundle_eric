@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Details</title>
+</head>
+<body>
+    <h1>Event Details</h1>
+    <h2>Event Information</h2>
+    <p><strong>Time:</strong> {{ event.startTime }}</p>
+    <p><strong>Location:</strong> {{ event.venue }}</p>
+
+    <h2>Participants</h2>
+    <ul>
+        {% for participant in event.participants %}
+            <li>{{ participant.email }}</li>
+            <li>{{ participant.username }}</li>
+        {% endfor %}
+    </ul>
+<a href="{{ url_for('event_bp.event_register', event_id = event.id) }}" class="btn btn-primary">register now</a>
+<a href="{{ url_for('user_bp.index') }}" class="btn btn-primary">index</a>
+</body>
+</html>

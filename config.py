@@ -9,5 +9,7 @@ DB_URI = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8mb4'.format(USERNAME,PASSWO
 SQLALCHEMY_DATABASE_URI = DB_URI
 
 class Config:
-    SECRET_KEY = os.urandom(24)
+    WTF_CSRF_ENABLED = False
+    WTF_CSRF_CHECK_DEFAULT = False
+    SECRET_KEY = '123456'
     SQLALCHEMY_DATABASE_URI = DB_URI

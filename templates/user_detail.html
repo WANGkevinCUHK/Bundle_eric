@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Infomation</title>
+</head>
+<body>
+    <h1>My Infomation</h1>
+    <h2>Event Information</h2>
+    <p><strong>Username:</strong> {{ user.username}}</p>
+    <p><strong>email:</strong> {{ user.email }}</p>
+    <p><strong>event:</strong>
+        {% if user.activity_id %}
+            {{ user.activity_id }}
+        {% else %}
+            not enrolled yet
+        {% endif %}
+        {% if user.activity_id %}
+            <a href="{{ url_for('event_bp.event_details', id=user.activity_id) }}">link</a>
+            <a href="{{ url_for('event_bp.withdrawal') }}">withdrawal</a>
+        {% endif %}
+        </p>
+<a href="{{ url_for('user_bp.index') }}" class="btn btn-primary">index</a>
+<a href="{{ url_for('user_bp.change') }}" class="btn btn-primary">change my infomation</a>
+</body>
+</html>

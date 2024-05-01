@@ -1,11 +1,13 @@
 # back end system introuction
 
 ## front words
-> This is a back-end system based on flask framework , mysql database</b>
-> I suppose I've achieved all the functionality requested in the pdf</b>
-> Moreover, I add a new function: friend recommendation which is a must for apps like Bundle(I suppose) and many other functions which is must for developing afterwards like deletion and linking.
+> This is a back-end system based on flask framework , mysql database. <br>
+> I suppose I've achieved all the functionality requested in the pdf. <br>
 
-> I enjoyed the process from learning to building the whole system and really hope I can continue doing such a interesting thing with interesting people regardless my role </b>
+> Moreover, I add a new function: friend recommendation which is a must for apps like Bundle(I suppose) and many other functions like deletion and linking for afterward developing.
+
+> I enjoyed the process from learning to building the whole system and really hope I can continue doing such a interesting thing with interesting people regardless my role <br>
+
 > Looking forward to hearing that I can join and let's do something different!
 
 ## First of all, I will introduce my technology stack selection
@@ -38,10 +40,10 @@
 > templates directory <br>
 
 #### supporting file
-> config.py: used to configure app information, specifically, used to configure mysql links
-> exts.py: used to introduce the database
-> forms.py: define all the forms you may need to fill in and check its validity
-> models.py: define all the data structure you will use in the project. Specifically, user, event, eventParticipantion, friendship
+> config.py: used to configure app information, specifically, used to configure mysql links <br>
+> exts.py: used to introduce the database <br>
+> forms.py: define all the forms you may need to fill in and check its validity <br>
+> models.py: define all the data structure you will use in the project. Specifically, user, event, eventParticipantion, friendship <br>
 
 #### BluePrint directory
 > user_bp.py: User-related routing
@@ -180,4 +182,4 @@
 >7. check your own mySQL database, check if the database you choose have the desired forms
 >8. run the app.py file
 >9. go to http://127.0.0.1:5000 in your chrome or click the linking in the "RUN console"
->10.if still don't work, plz email me. Let's figure out what's wrong~
+>10. if still don't work, plz email me. Let's figure out what's wrong~

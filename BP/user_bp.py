@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 user_bp = Blueprint("user_bp", __name__, url_prefix="/")
 from forms import registerForm, loginForm
-from models import User
+from models import User, Friendship
 from exts import db
 
 @user_bp.route('/')
@@ -93,6 +93,13 @@ def delete():
         db.session.delete(eventParticipant)
     for event in user.createList:
         db.session.delete(event)
+    for friendship in user.friendList:
+        dst_id = friendship.dst
+        dst = User.query.get(dst_id)
+        src = friendship.src
+        friendship_rev = Friendship.query.filter_by(dst=src.id,src=dst).first()
+        db.session.delete(friendship)
+        db.session.delete(friendship_rev)
     db.session.commit()
     db.session.delete(user)
     db.session.commit()

@@ -71,13 +71,19 @@ def friend_recommendation():
         user = User.query.get(friendship.dst)
         if user:
             friendlist.append(user)
-    friendfriendlist = []
-    commonfriend = []
-    for friend in friendlist:
-        firendfriends=friend.friendList
-        for friendfriendship in firendfriends:
-            frienduser = User.query.get(friendfriendship.dst)
-            if frienduser.id != user_id:
-                friendfriendlist.append(frienduser)
-                commonfriend.append(friend)
-    return render_template('firend_recommendation.html', records=friendfriendlist, commonfriend=commonfriend)
+    if friendlist == []:
+        return render_template('firend_recommendation.html', records=[], commonfriend=[])
+    else:
+        friendfriendlist = []
+        commonfriend = []
+        for friend in friendlist:
+            firendfriends=friend.friendList
+            print(friend.friendList[0])
+            print(friend.friendList[1])
+            for friendfriendship in firendfriends:
+                frienduser = User.query.get(friendfriendship.dst)
+
+                if frienduser != None and frienduser.id != user_id:
+                    friendfriendlist.append(frienduser)
+                    commonfriend.append(friend)
+        return render_template('firend_recommendation.html', records=friendfriendlist, commonfriend=commonfriend)

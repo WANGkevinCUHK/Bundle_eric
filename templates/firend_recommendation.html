@@ -8,9 +8,12 @@
     <table>
         <thead>
             <tr>
-                <th>friend id</th>
-                <th>friend username</th>
-                <th>friend email</th>
+                <th> #id# </th>
+                <th> #username# </th>
+                <th> #email# </th>
+                <th> #co-friend# </th>
+                <th> #co-friend email# </th>
+                <th> #link# </th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +22,9 @@
                 <td>{{ record.id }}</td>
                 <td>{{ record.username }}</td>
                 <td>{{ record.email }}</td>
-            </tr>
+                <td>{{ commonfriend[loop.index0].username }}</td>
+                <td>{{ commonfriend[loop.index0].email }}</td>
+                <td><a href="{{ url_for('friend_bp.add_friends') }}" class="btn btn-primary">add now</a></td>
             {% endfor %}
         </tbody>
     </table>

@@ -8,7 +8,7 @@ from .user_bp import user_bp
 @event_bp.route('/list')
 def list_events():
     records = Event.query.order_by(Event.startTime).all()
-    return render_template('listevent.html', records=records)
+    return render_template('event_list.html', records=records)
 
 @event_bp.route('/list/<int:id>')
 def event_details(id):
@@ -30,7 +30,7 @@ def withdrawal(event_id):
         if eventparticipant:
             db.session.delete(eventparticipant)
             db.session.commit()
-            return render_template('event_out.html')
+            return render_template('event_withdrawl.html')
         else:
             print("NO RECORD")
             return redirect(url_for("user_bp.info"))
@@ -38,6 +38,25 @@ def withdrawal(event_id):
         print("NO RECORD")
 
         return redirect(url_for("user_bp.info"))
+
+@event_bp.route('/delete/<int:event_id>')
+def delete(event_id):
+    user = User.query.get(session['user_id'])
+    eventidList = []
+    for event in user.createList:
+        eventidList.append(event.id)
+    if event_id in eventidList:
+        event = Event.query.get(event_id)
+        for eventParticipant in event.participantList:
+            db.session.delete(eventParticipant)
+        db.session.commit()
+        db.session.delete(event)
+        db.session.commit()
+        return render_template('event_delete.html')
+    else:
+        print("NO RECORD")
+        return redirect(url_for("user_bp.info"))
+
 
 @event_bp.route('/register/<int:event_id>')
 def event_register(event_id):
@@ -58,12 +77,12 @@ def event_register(event_id):
         records = event.participantList
         for eventParticipant in records:
             participantList.append(User.query.get(eventParticipant.user_id))
-        return render_template('register_ok.html', event=event, participantList=participantList)
+        return render_template('event_registerConfirm.html', event=event, participantList=participantList)
 
 @event_bp.route('/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'GET':
-        return render_template('createevent.html')
+        return render_template('event_create.html')
     elif request.method == 'POST':
         form = eventForm(request.form)
         if form.validate():

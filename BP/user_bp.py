@@ -7,14 +7,19 @@ from exts import db
 @user_bp.route('/')
 def index():
     if session.get('user_id'):
-        return render_template('events_index.html')
+        return render_template('user_loginIndex.html')
     else:
-        return render_template('index.html')
+        return render_template('user_notloginIndex.html')
+
+@user_bp.route('/info')
+def info():
+    user = User.query.get(session['user_id'])
+    return render_template('user_detail.html', user=user)
 
 @user_bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
-        return render_template('register.html')
+        return render_template('user_register.html')
     else:
         form = registerForm(request.form)
         if form.validate():
@@ -29,36 +34,10 @@ def register():
             print(form.errors)
             return redirect(url_for("user_bp.register"))
 
-@user_bp.route('/info')
-def info():
-    user = User.query.get(session['user_id'])
-    return render_template('user_detail.html', user=user)
-
-@user_bp.route('/change', methods=['GET', 'POST'])
-def change():
-    if request.method == 'GET':
-        return render_template('change.html')
-    else:
-        form = registerForm(request.form)
-        if form.validate():
-            user = User.query.get(session['user_id'])
-            email = form.email.data
-            username = form.username.data
-            password = form.password.data
-            user.email = email
-            user.username = username
-            user.password = password
-            db.session.commit()
-            session.clear()
-            return redirect(url_for("user_bp.login"))
-        else:
-            print(form.errors)
-            return redirect(url_for("user_bp.change"))
-
 @user_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
-        return render_template("login.html")
+        return render_template("user_login.html")
     else:
         form = loginForm(request.form)
         if form.validate():
@@ -82,3 +61,42 @@ def login():
 def logout():
     session.clear()
     return redirect("/")
+
+@user_bp.route('/change', methods=['GET', 'POST'])
+def change():
+    if request.method == 'GET':
+        return render_template('user_change.html')
+    else:
+        form = registerForm(request.form)
+        if form.validate():
+            user = User.query.get(session['user_id'])
+            email = form.email.data
+            username = form.username.data
+            password = form.password.data
+            user.email = email
+            user.username = username
+            user.password = password
+            db.session.commit()
+            session.clear()
+            return redirect(url_for("user_bp.login"))
+        else:
+            print(form.errors)
+            return redirect(url_for("user_bp.change"))
+
+
+@user_bp.route('/delete')
+def delete():
+    user = User.query.get(session['user_id'])
+    print(session['user_id'])
+    print(user)
+    for eventParticipant in user.eventList:
+        db.session.delete(eventParticipant)
+    for event in user.createList:
+        db.session.delete(event)
+    db.session.commit()
+    db.session.delete(user)
+    db.session.commit()
+    session.clear()
+    return redirect(url_for("user_bp.index"))
+
+

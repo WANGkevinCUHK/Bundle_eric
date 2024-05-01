@@ -1,5 +1,6 @@
 from exts import db
 from datetime import datetime
+from sqlalchemy.schema import UniqueConstraint
 
 class User(db.Model):
     __tablename__ = "users"
@@ -36,3 +37,4 @@ class Friendship(db.Model):
     created_time = db.Column(db.DateTime, default=datetime.now)
     src_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     src = db.relationship("User", backref="friendList")
+    __table_args__ = (UniqueConstraint('src_id','dst',name='_src_dst_uc'),)

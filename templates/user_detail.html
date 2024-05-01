@@ -13,7 +13,7 @@
         <ul>
             {% for event in user.createList %}
                 <li> create event {{loop.index}} <a href="{{ url_for('event_bp.event_details', id= event.id) }}">link</a>
-                    <a href="{{ url_for('event_bp.withdrawal', event_id = event.id) }}">delete</a> </li>
+                    <a href="{{ url_for('event_bp.delete', event_id = event.id) }}">delete</a> </li>
             {% endfor %}
         </ul>
         {% else %}
@@ -34,5 +34,6 @@
         </p>
 <a href="{{ url_for('user_bp.index') }}" class="btn btn-primary">index</a>
 <a href="{{ url_for('user_bp.change') }}" class="btn btn-primary">change my infomation</a>
+<a href="{{ url_for('user_bp.delete') }}" class="btn btn-primary">delete acount</a>
 </body>
 </html>

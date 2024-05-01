@@ -8,15 +8,28 @@
     <h2>Event Information</h2>
     <p><strong>Username:</strong> {{ user.username}}</p>
     <p><strong>email:</strong> {{ user.email }}</p>
-    <p><strong>event:</strong>
-        {% if user.activity_id %}
-            {{ user.activity_id }}
+    <p><strong>event I have created:</strong>
+        {% if user.createList %}
+        <ul>
+            {% for event in user.createList %}
+                <li> create event {{loop.index}} <a href="{{ url_for('event_bp.event_details', id= event.id) }}">link</a>
+                    <a href="{{ url_for('event_bp.withdrawal', event_id = event.id) }}">delete</a> </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            not created yet
+        {% endif %}
+        </p>
+    <p><strong>event I have registered:</strong>
+        {% if user.eventList %}
+        <ul>
+            {% for eventParticipant in user.eventList %}
+                <li> participant event {{loop.index}} <a href="{{ url_for('event_bp.event_details', id= eventParticipant.event_id) }}">link</a>
+                    <a href="{{ url_for('event_bp.withdrawal', event_id = eventParticipant.event_id) }}">withdrawal</a> </li>
+            {% endfor %}
+        </ul>
         {% else %}
             not enrolled yet
-        {% endif %}
-        {% if user.activity_id %}
-            <a href="{{ url_for('event_bp.event_details', id=user.activity_id) }}">link</a>
-            <a href="{{ url_for('event_bp.withdrawal') }}">withdrawal</a>
         {% endif %}
         </p>
 <a href="{{ url_for('user_bp.index') }}" class="btn btn-primary">index</a>

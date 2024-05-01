@@ -4,7 +4,7 @@
 > This is a back-end system based on flask framework , mysql database. <br>
 > I suppose I've achieved all the functionality requested in the pdf. <br>
 
-> Moreover, I add a new function: friend recommendation which is a must for apps like Bundle(I suppose) and many other functions like deletion and linking for afterward developing.
+> Moreover, I add a new function: friend recommendation which is a must for apps like Bundle(I suppose) and many other functions like deletion and linking which is benifitial to afterward developing.
 
 > I enjoyed the process from learning to building the whole system and really hope I can continue doing such a interesting thing with interesting people regardless my role <br>
 
@@ -21,7 +21,7 @@
 > > Flask integrates seamlessly with other popular Python libraries and tools, which allows teams to incrementally expand the functionality and performance of their applications as needed.
 
 ####  mysql database
-> 1. stable and reliable
+> 1. Stable and reliable
 > > The mysql database is mature and stable, with a lower probability of incompatibility and bugs, preventing the team from getting stuck in the early stages of development.
 > 2. Strong eco-support
 > > The combination of mysql and flask is stable and easy to use.
@@ -90,7 +90,7 @@
 >     - friend_bp
 
 
-## Secondly, let's go into the database
+## Thirdly, let's go into the database
 > Create four tables, Users, Events, EventParticipation, and Friendships. 
 
 > The core idea is:
@@ -130,7 +130,7 @@
 >    - dst_id
 >    - src_id(foreign key)
 
-## Thirdly, the webpage linking
+## Forthly, the webpage linking
 #### you may have a try youself
 > I define 2 status: login and non-login
 > 1. for forms, I use GET to ask you to fill in, POST to check validity and redirect

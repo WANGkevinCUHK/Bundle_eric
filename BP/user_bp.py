@@ -87,11 +87,11 @@ def change():
 @user_bp.route('/delete')
 def delete():
     user = User.query.get(session['user_id'])
-    print(session['user_id'])
-    print(user)
     for eventParticipant in user.eventList:
         db.session.delete(eventParticipant)
     for event in user.createList:
+        for eventParticipant in event.participantList:
+            db.session.delete(eventParticipant)
         db.session.delete(event)
     for friendship in user.friendList:
         dst_id = friendship.dst

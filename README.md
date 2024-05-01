@@ -183,3 +183,9 @@
 >8. run the app.py file
 >9. go to http://127.0.0.1:5000 in your chrome or click the linking in the "RUN console"
 >10. if still don't work, plz email me. Let's figure out what's wrong~
+
+
+## Some last words
+> There might be typo because my test maynot be enough and different environment might make thing worse.
+ 
+> Plz give me some patience and some time to explain if you encounter some problem. Thanks a lot!!!!

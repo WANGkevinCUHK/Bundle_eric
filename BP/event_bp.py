@@ -36,6 +36,7 @@ def withdrawal(event_id):
             return redirect(url_for("user_bp.info"))
     else:
         print("NO RECORD")
+
         return redirect(url_for("user_bp.info"))
 
 @event_bp.route('/register/<int:event_id>')

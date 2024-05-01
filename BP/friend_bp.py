@@ -10,7 +10,7 @@ from exts import db
 @friend_bp.route('/list')
 def list_friends():
     user = User.query.get(session['user_id'])
-    friends = user.friendlist
+    friends = user.friendList
     friendlist = []
     for friendship in friends:
         user = User.query.get(friendship.dst)
@@ -38,3 +38,16 @@ def add_friends():
         else:
             print(form.errors)
             return redirect(url_for("friend_bp.add_friends"))
+
+@friend_bp.route('/recommend')
+def friend_recommendation():
+        form = addForm(request.form)
+        if form.validate():
+            email = form.email.data
+            dst = User.query.filter_by(email=email).first()
+            src = User.query.get(session['user_id'])
+            friendship = Friendship(dst=dst.id)
+            friendship.src = src
+            db.session.add(friendship)
+            db.session.commit()
+            return render_template('firendrecommendation.html')

@@ -1,5 +1,13 @@
 ## web introuction
 
+### front words
+> This is a back-end system based on flask framework , mysql database</b>
+> I suppose I've achieved all the functionality requested in the pdf</b>
+> I enjoyed the process from learning to building the whole system and really hope to continue to do such a interesting thing with interesting people regardless my role </b>
+> Afterall, 
+> 
+> 
+
 
 >- not login status
 >  - index

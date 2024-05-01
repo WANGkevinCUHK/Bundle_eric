@@ -78,8 +78,6 @@ def friend_recommendation():
         commonfriend = []
         for friend in friendlist:
             firendfriends=friend.friendList
-            print(friend.friendList[0])
-            print(friend.friendList[1])
             for friendfriendship in firendfriends:
                 frienduser = User.query.get(friendfriendship.dst)
 

@@ -1,3 +1,6 @@
+> After careful consideration, I decide to quit since I think this group is unreliable and maybe not achieve anything.
+> It's a naive idea and I have no reason to be "not important person" and do most work and get nearly no pay.
+
 # back end system introuction
 
 ## front words
